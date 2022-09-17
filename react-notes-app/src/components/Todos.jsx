@@ -1,6 +1,20 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import { addTodos } from "../redux/reduser";
 
-const Todos = () => {
+const mapStateToProps = (state) => {
+    return {
+        todos: state,
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addTodo: (obj) => dispatch(addTodos(obj)),
+    }
+}
+
+const Todos = (props) => {
 
     const [todoTitle, setTodoTitle] = useState("");
     const [todoDescription, setTodoDescription] = useState("");
@@ -16,7 +30,7 @@ const Todos = () => {
         setTodoCategory(e.target.value);
     };
 
-    console.log("todo text:", todoTitle, todoCategory, todoDescription);
+    console.log("todo text:", props);
     return <div className="addTodos">
     
         <input 
@@ -41,11 +55,35 @@ const Todos = () => {
             className="todo-description-input"
         />
 
-        <button className="add-btn">
+        <button
+            className="add-btn"
+            onClick={() => props.addTodo({
+                id: Math.floor(Math.random()*1000),
+                title: todoTitle,
+                createdDate: "curDate",
+                category: todoCategory,
+                description: todoDescription,
+                dates: "datesFromDescription",
+                isArchived: false
+            })}
+        >
             Add
         </button>
+        <br />
 
+        <ul>
+            {props.todos.map((item) => {
+                return <li key={item.id}>
+                    <span className="title">{item.title}</span>
+                    <span className="createdDate">{item.createdDate}</span>
+                    <span className="category">{item.category}</span>
+                    <span className="description">{item.description}</span>
+                    <span className="dates">{item.dates}</span>
+                    </li>;
+            })}
+
+        </ul>    
     </div>;
 };
 
-export default Todos;
+export default connect(mapStateToProps, mapDispatchToProps)(Todos);
