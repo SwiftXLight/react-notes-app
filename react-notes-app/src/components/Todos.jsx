@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { addTodos } from "../redux/reduser";
+import { addTodos, removeTodos } from "../redux/reduser";
 
 const mapStateToProps = (state) => {
     return {
@@ -11,6 +11,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         addTodo: (obj) => dispatch(addTodos(obj)),
+        removeTodo: (id) => dispatch(removeTodos(id)),
     }
 }
 
@@ -79,6 +80,12 @@ const Todos = (props) => {
                     <span className="category">{item.category}</span>
                     <span className="description">{item.description}</span>
                     <span className="dates">{item.dates}</span>
+
+                    <button
+                        onClick={() => props.removeTodo(item.id)}
+                    >
+                        Delete
+                    </button>
                     </li>;
             })}
 
