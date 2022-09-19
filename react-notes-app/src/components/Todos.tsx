@@ -45,6 +45,9 @@ const Todos = (props: { addTodo: (arg0: Item ) => void; }) => {
         description: todoDescription,
         isArchived: false
       });
+      setTodoTitle("");
+      setTodoDescription("");
+      setTodoCategory("Task");
     }
   };
   //console.log("props from store", props);
@@ -62,16 +65,15 @@ const Todos = (props: { addTodo: (arg0: Item ) => void; }) => {
                 </div>
                 <div className="modal-body">
                     <p>Task Name</p>
-                    <input type="text" className="form-control" name="" id="textInput" 
+                    <input type="text" className="form-control" name="" id="textInput" value={todoTitle}
                     onChange={(e) => handleTitleChange(e)}/>
-                    <div id="msg"></div>
                     <br />
                     <p>Content</p>
-                    <textarea name="" className="form-control" id="textarea" cols={30} rows={5} 
+                    <textarea name="" className="form-control" id="textarea" cols={30} rows={5} value={todoDescription}
                     onChange={(e) => handleDescriptionChange(e)}></textarea>
                     <br />
                     <p>Category</p>
-                    <select name="category" className="form-control" id="category"
+                    <select name="category" className="form-control" id="category" value={todoCategory}
                     onChange={(e) => handleCategoryChange(e)}>
                         <option value="Task">Task</option>
                         <option value="Random Thought">Random Thought</option>
@@ -79,18 +81,8 @@ const Todos = (props: { addTodo: (arg0: Item ) => void; }) => {
                       </select>
                 </div>
                 <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
-                        Close
-                    </button>
-                    <button
-                    type="button"
-                    id="add"
-                    className="btn btn-primary"
-                    data-bs-dismiss="modal"
-                    onClick={() => add()}
-                    >
-                      Add
-                    </button>
+                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="add" className="btn btn-primary" data-bs-dismiss="modal" onClick={() => add()}>Add</button>
                 </div>
             </div>
         </div>

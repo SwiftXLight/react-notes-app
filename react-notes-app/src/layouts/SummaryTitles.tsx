@@ -1,6 +1,6 @@
 import React from "react";
 
-const SummaryTitles = () => {
+const SummaryTitles: React.FC = () => {
     return  <div className="summary-title">
                 <span>Note Category</span>
                 <span>Active</span>

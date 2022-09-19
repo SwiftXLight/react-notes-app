@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { GoPlus } from "react-icons/go";
 
-const AddBtn = () => {
+const AddBtn: React.FC = () => {
     return  <motion.button
                 id="addNew"
                 data-bs-toggle="modal"

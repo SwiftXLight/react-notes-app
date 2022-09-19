@@ -1,6 +1,6 @@
 import React from "react";
 
-const NotesTitles = () => {
+const NotesTitles: React.FC = () => {
     return  <div className="card">
                 <span>Name</span>
                 <span>Created</span>
