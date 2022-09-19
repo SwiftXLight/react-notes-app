@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap");
+
+html {
+  line-height: 1.15;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "RocknRoll One", sans-serif;
+}
+
+body {
+  background: linear-gradient(
+    190deg,
+    rgb(134, 123, 205) 0%,
+    rgb(106, 90, 171) 100%
+  );
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  color: #222;
+  overflow: hidden;
+}
+
+.App {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.App h1 {
+  display: inline;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #e1ebfd;
+
+  text-shadow: 0 0 5px #433aa8, 3px -1px 5px #271c6c;
+}
+
+.addTodos {
+  display: flex;
+  justify-content: center;
+}
+
+.add-btn {
+  margin-left: 1rem;
+  background-color: #271c6c;
+  color: #e1ebfd;
+  border-radius: 50%;
+  border: 2px solid #e1ebfd;
+  font-size: 1.5rem;
+  width: 3.2rem;
+  height: 3.2rem;
+  cursor: pointer;
+  box-shadow: 2px 4px 10px #271c6c;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-btn:focus {
+  outline: none;
+}
+
+.displaytodos {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.displaytodos .buttons {
+  margin-bottom: 2rem;
+}
+
+.displaytodos .buttons button {
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  cursor: pointer;
+  border: none;
+}
+
+.displaytodos .buttons button:focus {
+  outline: none;
+}
+
+.displaytodos .buttons button:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.displaytodos ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.card,
+.notes-titles {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  justify-items: center;
+  align-items: center;
+  background: rgb(180, 182, 218);
+  background: radial-gradient(
+    circle,
+    hsla(237, 34%, 78%, 0.9) 0%,
+    hsla(219, 88%, 94%, 0.9) 100%
+  );
+
+  margin: 0 0 1rem 0;
+  width: 80vw;
+  border-radius: 0.5rem;
+  padding: 1rem;
+
+  position: relative;
+}
+
+.archived {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: #867bcd;
+  border: 2px solid #272727;
+  color: #e1ebfd;
+
+  font-size: 0.6rem;
+  padding: 0.3rem;
+  border-radius: 20px;
+}
+
+.options {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.options:hover {
+  cursor: pointer;
+}
+
+.options:nth-child(1):hover {
+  cursor: auto;
+}
