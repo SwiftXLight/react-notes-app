@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
 import React from "react";
+import Item from "interfaces/Item";
 
-const TodoItem = (props: { item: any; removeTodo: any; archiveTodo: any; }) => {
+const TodoItem = (props: { item: Item; removeTodo: any; archiveTodo: any; }) => {
   const { item, removeTodo, archiveTodo } = props;
   const reg = /(\d{1,4}([.\-/])\d{1,2}([.\-/])\d{1,4})/g;
 
   let dates = "";
   if (item.description.match(reg)) {
-    dates = item.description.match(reg).join(", ");
+    dates = item.description.match(reg)!.join(", ");
   }
-  console.log(props);
 
   return (
     <motion.li
@@ -17,7 +17,7 @@ const TodoItem = (props: { item: any; removeTodo: any; archiveTodo: any; }) => {
       initial={{ x: "150vw", transition: { type: "spring", duration: 2 } }}
       animate={{ x: 0, transition: { type: "spring", duration: 2 } }}
       whileHover={{
-        scale: 0.98,
+        scale: 0.99,
         transition: { type: "spring", duration: 0.1 },
       }}
       exit={{
@@ -35,11 +35,24 @@ const TodoItem = (props: { item: any; removeTodo: any; archiveTodo: any; }) => {
       <span className="description small text-secondary">{item.description}</span>
       <span className="dates small text-secondary">{dates}</span>
         <span className="options">
-            <i className="fa-solid fa-box-archive"
-            onClick={() => archiveTodo(item.id)}></i>
-            <i className="fas fa-edit" data-bs-toggle="modal" data-bs-target="#form" aria-hidden="true"
-                onClick={() => removeTodo(item.id)}></i>
-            <i className="fas fa-trash-alt" onClick={() => removeTodo(item.id)}></i>
+            <motion.i className="fa-solid fa-box-archive"
+              whileHover={{ scale: 1.5 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => archiveTodo(item.id)}>
+            </motion.i>
+            {item.isArchived === false && (
+            <motion.i className="fas fa-edit" data-bs-toggle="modal" data-bs-target="#form" aria-hidden="true"
+              whileHover={{ scale: 1.5 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => removeTodo(item.id)}>
+            </motion.i>
+            )}
+            <motion.i 
+              className="fas fa-trash-alt" 
+              whileHover={{ scale: 1.5 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => removeTodo(item.id)}>
+            </motion.i>
         </span>
       {item.isArchived && <span className="archived">Archived</span>}
     </motion.li>

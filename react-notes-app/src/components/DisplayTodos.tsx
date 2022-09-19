@@ -7,7 +7,9 @@ import {
 } from "../redux/reducer";
 import TodoItem from "./TodoItem";
 import NotesTitles from "../layouts/NotesTitles"
+import SummaryTitles from "layouts/SummaryTitles";
 import { AnimatePresence, motion } from "framer-motion";
+import Item from "interfaces/Item";
 
 const mapStateToProps = (state: any) => {
   return {
@@ -23,7 +25,29 @@ const mapDispatchToProps = (dispatch: (arg0: { payload: any; type: string; }) =>
   };
 };
 
-const DisplayTodos = (props: { todos: any[]; removeTodo: any; archiveTodo: any; }) => {
+const DisplayTodos = (props: any) => {
+  let activeIdea = 0;
+  let activeTask = 0;
+  let activeRandomThought = 0;
+  let archiveIdea = 0;
+  let archiveTask = 0;
+  let archiveRandomThoughtArc = 0;
+  for (let i = 0; i < props.todos.length; i++) {
+    if (props.todos[i].category === "Idea" && !props.todos[i].isArchived) {
+      activeIdea++;
+    } else if (props.todos[i].category === "Idea" && props.todos[i].isArchived) {
+      archiveIdea++;
+    } else if (props.todos[i].category === "Task" && !props.todos[i].isArchived) {
+      activeTask++;
+    } else if (props.todos[i].category === "Task" && props.todos[i].isArchived) {
+      archiveTask++;
+    } else if (props.todos[i].category === "Random Thought" && !props.todos[i].isArchived) {
+      activeRandomThought++;
+    } else if (props.todos[i].category === "Random Thought" && props.todos[i].isArchived) {
+      archiveRandomThoughtArc++;
+    }
+  }
+
   const [sort, setSort] = useState("active");
   return (
     <div className="displaytodos">
@@ -51,10 +75,10 @@ const DisplayTodos = (props: { todos: any[]; removeTodo: any; archiveTodo: any; 
         </motion.button>
       </div>
       <NotesTitles />
-      <ul>
+      <ul className="todos-list">
         <AnimatePresence>
           {props.todos.length > 0 && sort === "active"
-            ? props.todos.map((item) => {
+            ? props.todos.map((item: Item) => {
                 return (
                   item.isArchived === false && (
                     <TodoItem
@@ -69,7 +93,7 @@ const DisplayTodos = (props: { todos: any[]; removeTodo: any; archiveTodo: any; 
             : null}
           {/* for completed items */}
           {props.todos.length > 0 && sort === "archived"
-            ? props.todos.map((item) => {
+            ? props.todos.map((item: Item) => {
                 return (
                   item.isArchived === true && (
                     <TodoItem
@@ -84,7 +108,7 @@ const DisplayTodos = (props: { todos: any[]; removeTodo: any; archiveTodo: any; 
             : null}
           {/* for all items */}
           {props.todos.length > 0 && sort === "all"
-            ? props.todos.map((item) => {
+            ? props.todos.map((item: Item) => {
                 return (
                   <TodoItem
                     key={item.id}
@@ -96,6 +120,25 @@ const DisplayTodos = (props: { todos: any[]; removeTodo: any; archiveTodo: any; 
               })
             : null}
         </AnimatePresence>
+      </ul>
+
+      <SummaryTitles />
+      <ul className="summary-list">
+        <li className="summary-item">
+          <span>Task</span>
+          <span id="task-active">{activeTask}</span>
+          <span id="task-archive">{archiveTask}</span>
+        </li>
+        <li className="summary-item">
+          <span>Random Thought</span>
+          <span id="random-thought-active">{activeRandomThought}</span>
+          <span id="random-thought-archive">{archiveRandomThoughtArc}</span>
+        </li>
+        <li className="summary-item">
+          <span>Idea</span>
+          <span id="idea-active">{activeIdea}</span>
+          <span id="idea-archive">{archiveIdea}</span>
+        </li>
       </ul>
     </div>
   );
