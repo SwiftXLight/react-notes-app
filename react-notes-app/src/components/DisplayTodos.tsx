@@ -5,27 +5,32 @@ import {
   archiveTodos,
   removeTodos,
 } from "../redux/reducer";
+import type { RootState, AppDispatch } from '../redux/store';
 import TodoItem from "./TodoItem";
 import NotesTitles from "../layouts/NotesTitles"
 import SummaryTitles from "layouts/SummaryTitles";
 import { AnimatePresence, motion } from "framer-motion";
 import Item from "interfaces/Item";
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: RootState) => {
   return {
     todos: state,
   };
 };
 
-const mapDispatchToProps = (dispatch: (arg0: { payload: any; type: string; }) => any) => {
+const mapDispatchToProps = (dispatch: AppDispatch) => {
   return {
-    addTodo: (obj: object) => dispatch(addTodos(obj)),
+    addTodo: (obj: Item) => dispatch(addTodos(obj)),
     removeTodo: (id: number) => dispatch(removeTodos(id)),
     archiveTodo: (id: number) => dispatch(archiveTodos(id)),
   };
 };
 
-const DisplayTodos = (props: any) => {
+const DisplayTodos = (props: 
+  { todos: Item[];
+    removeTodo: (id: number ) => {payload: number; type: string};
+    archiveTodo: (id: number ) => {payload: number; type: string};
+  }) => {
   let activeIdea = 0;
   let activeTask = 0;
   let activeRandomThought = 0;
@@ -91,7 +96,6 @@ const DisplayTodos = (props: any) => {
                 );
               })
             : null}
-          {/* for completed items */}
           {props.todos.length > 0 && sort === "archived"
             ? props.todos.map((item: Item) => {
                 return (
@@ -106,7 +110,6 @@ const DisplayTodos = (props: any) => {
                 );
               })
             : null}
-          {/* for all items */}
           {props.todos.length > 0 && sort === "all"
             ? props.todos.map((item: Item) => {
                 return (

@@ -21,6 +21,7 @@ body {
   background-size: cover;
   background-attachment: fixed;
   color: #222;
+  overflow-x: hidden;
 }
 
 .App {

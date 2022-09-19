@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import Item from "interfaces/Item";
 
 const initialState = [
   {id: 1, title: "title1", createdDate: "2022-09-19", category: "Task", description: "description1", isArchived: false},
@@ -14,16 +15,16 @@ const addTodoReducer = createSlice({
   name: "todos",
   initialState,
   reducers: {
-    addTodos: (state, action) => {
+    addTodos: (state: Item[], action: PayloadAction<Item>) => {
       state.push(action.payload);
       return state;
     },
 
-    removeTodos: (state, action) => {
+    removeTodos: (state: Item[], action: PayloadAction<number>) => {
       return state.filter((item) => item.id !== action.payload);
     },
 
-    archiveTodos: (state, action) => {
+    archiveTodos: (state: Item[], action: PayloadAction<number>) => {
       return state.map((item) => {
         if (item.id === action.payload) {
           return {

@@ -2,23 +2,24 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { addTodos } from "../redux/reducer";
 import AddBtn from "../layouts/AddBtn";
-import Item from "../interfaces/Item"
+import Item from "../interfaces/Item";
+import type { RootState, AppDispatch } from '../redux/store';
 
 let utc = new Date().toJSON().slice(0,10);
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: RootState) => {
   return {
     todos: state,
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: AppDispatch) => {
   return {
-    addTodo: (obj: object) => dispatch(addTodos(obj)),
+    addTodo: (obj: Item) => dispatch(addTodos(obj)),
   };
 };
 
-const Todos = (props: { addTodo: (arg0: Item ) => void; }) => {
+const Todos = (props: { addTodo: (obj: Item) => {payload: Item; type: string;}}) => {
   const [todoTitle, setTodoTitle] = useState("");
   const [todoDescription, setTodoDescription] = useState("");
   const [todoCategory, setTodoCategory] = useState("Task");
