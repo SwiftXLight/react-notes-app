@@ -19,7 +19,11 @@ const mapDispatchToProps = (dispatch: AppDispatch) => {
   };
 };
 
-const Todos = (props: { addTodo: (obj: Item) => {payload: Item; type: string;}}) => {
+const Todos = (props: { 
+  addTodo: (obj: Item) => {
+    payload: Item;
+    type: string;
+  }}) => {
   const [todoTitle, setTodoTitle] = useState("");
   const [todoDescription, setTodoDescription] = useState("");
   const [todoCategory, setTodoCategory] = useState("Task");

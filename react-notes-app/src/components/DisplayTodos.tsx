@@ -26,10 +26,10 @@ const mapDispatchToProps = (dispatch: AppDispatch) => {
   };
 };
 
-const DisplayTodos = (props: 
-  { todos: Item[];
-    removeTodo: (id: number ) => {payload: number; type: string};
-    archiveTodo: (id: number ) => {payload: number; type: string};
+const DisplayTodos = (props: { 
+  todos: Item[];
+  removeTodo: (id: number ) => {payload: number; type: string};
+  archiveTodo: (id: number ) => {payload: number; type: string};
   }) => {
   let activeIdea = 0;
   let activeTask = 0;
