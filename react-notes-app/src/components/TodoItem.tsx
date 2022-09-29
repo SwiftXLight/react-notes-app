@@ -31,7 +31,7 @@ const TodoItem = (props: {
         backgroundColor: "rgba(255,0,0,1)",
       }}
       key={item.id}
-      className="grid grid-cols-6 justify-items-center items-center w-vw75 p-4 mb-1 mx-auto rounded-lg bg-silver relative radial-gradient"
+      className="grid grid-cols-6 justify-items-center items-center w-vw75 p-3 mb-3 mx-auto rounded-lg bg-silver relative radial-gradient"
     >
       <span className="title fw-bold">{item.title}</span>
       <span className="createdDate small text-secondary">{item.createdDate}</span>

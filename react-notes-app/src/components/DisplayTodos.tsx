@@ -58,7 +58,7 @@ const DisplayTodos = (props: {
     <div className="flex flex-col items-center mt-12">
       <div className="mb-8">
         <motion.button
-          className="radial-gradient px-6 py-2 rounded-2xl cursor-pointer bg-silver focus:outline-none mr-4"
+          className="px-6 py-2 rounded-2xl cursor-pointer bg-silver hover:bg-text-main focus:outline-none mr-4"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => setSort("active")}
@@ -66,7 +66,7 @@ const DisplayTodos = (props: {
           Active
         </motion.button>
         <motion.button
-          className="radial-gradient px-6 py-2 rounded-2xl cursor-pointer bg-silver focus:outline-none mr-4"
+          className="px-6 py-2 rounded-2xl cursor-pointer bg-silver hover:bg-text-main focus:outline-none mr-4"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => setSort("archived")}
@@ -74,7 +74,7 @@ const DisplayTodos = (props: {
           Archived
         </motion.button>
         <motion.button
-          className="radial-gradient px-6 py-2 rounded-2xl cursor-pointer bg-silver focus:outline-none"
+          className="px-6 py-2 rounded-2xl cursor-pointer bg-silver hover:bg-text-main focus:outline-none"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => setSort("all")}
@@ -130,17 +130,17 @@ const DisplayTodos = (props: {
 
       <SummaryTitles />
       <ul>
-        <li className="radial-gradient grid grid-cols-3 justify-items-center items-center w-vw75 p-4 mb-1 rounded-lg bg-silver relativem">
+        <li className="radial-gradient grid grid-cols-3 justify-items-center items-center w-vw75 p-3 mb-3 rounded-lg bg-silver relativem">
           <span>Task</span>
           <span id="task-active">{activeTask}</span>
           <span id="task-archive">{archiveTask}</span>
         </li>
-        <li className="radial-gradient grid grid-cols-3 justify-items-center items-center w-vw75 p-4 mb-1 rounded-lg bg-silver relative">
+        <li className="radial-gradient grid grid-cols-3 justify-items-center items-center w-vw75 p-3 mb-3 rounded-lg bg-silver relative">
           <span>Random Thought</span>
           <span id="random-thought-active">{activeRandomThought}</span>
           <span id="random-thought-archive">{archiveRandomThoughtArc}</span>
         </li>
-        <li className="radial-gradient grid grid-cols-3 justify-items-center items-center w-vw75 p-4 mb-1 rounded-lg bg-silver relative">
+        <li className="radial-gradient grid grid-cols-3 justify-items-center items-center w-vw75 p-3 mb-3 rounded-lg bg-silver relative">
           <span>Idea</span>
           <span id="idea-active">{activeIdea}</span>
           <span id="idea-archive">{archiveIdea}</span>
