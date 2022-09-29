@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap");
+
+.radial-gradient {
+    background: radial-gradient(
+      circle,
+      hsla(237, 34%, 78%, 0.9) 0%,
+      hsla(219, 88%, 94%, 0.9) 100%
+    );
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
