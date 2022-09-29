@@ -55,9 +55,9 @@ const Todos = (props: {
       setTodoCategory("Task");
     }
   };
-  //console.log("props from store", props);
+
   return (
-    <div className="addTodos">
+    <div className="flex justify-center">
 
       <AddBtn />
 
@@ -86,8 +86,8 @@ const Todos = (props: {
                       </select>
                 </div>
                 <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" id="add" className="btn btn-primary" data-bs-dismiss="modal" onClick={() => add()}>Add</button>
+                    <button type="button" className="btn btn-secondary text-gray-700" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="add" className="btn btn-primary text-blue-500" data-bs-dismiss="modal" onClick={() => add()}>Add</button>
                 </div>
             </div>
         </div>

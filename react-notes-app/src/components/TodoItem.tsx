@@ -31,14 +31,14 @@ const TodoItem = (props: {
         backgroundColor: "rgba(255,0,0,1)",
       }}
       key={item.id}
-      className="card"
+      className="grid grid-cols-6 justify-items-center items-center w-vw75 p-4 mb-1 mx-auto rounded-lg bg-silver relative radial-gradient"
     >
       <span className="title fw-bold">{item.title}</span>
       <span className="createdDate small text-secondary">{item.createdDate}</span>
       <span className="category fw-bold">{item.category}</span>
       <span className="description small text-secondary">{item.description}</span>
       <span className="dates small text-secondary">{dates}</span>
-        <span className="options">
+        <span className="flex align-items-center gap-2 hover:cursor-pointer">
             <motion.i className="fa-solid fa-box-archive"
               whileHover={{ scale: 1.5 }}
               whileTap={{ scale: 0.9 }}
@@ -58,7 +58,7 @@ const TodoItem = (props: {
               onClick={() => removeTodo(item.id)}>
             </motion.i>
         </span>
-      {item.isArchived && <span className="archived">Archived</span>}
+      {item.isArchived && <span className="absolute right-0 top-0 border-2 bg-archive-bg border-archive-border rounded-3xl text-xs p-1 text-text-main">Archived</span>}
     </motion.li>
   );
 };
