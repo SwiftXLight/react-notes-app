@@ -11,7 +11,7 @@ interface IModalProps {
 }
 
 const ActiveModal: React.FC<IModalProps> = (props: IModalProps) => {
-    return  <form className="modal fade show" id="form" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true" role="dialog" style={{display: "block"}}>
+    return  <form className="modal fade show" id="form" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true" role="dialog" style={{display: "block", position: "static"}}>
     <div className="modal-dialog">
         <div className="modal-content">
             <div className="modal-header">

@@ -2,11 +2,13 @@ import { motion } from "framer-motion";
 import React from "react";
 import Item from "interfaces/Item";
 
-const TodoItem = (props: { 
+interface ITodoItem {
   item: Item;
   removeTodo: (id: number ) => {payload: number; type: string};
   archiveTodo: (id: number ) => {payload: number; type: string};
-  }) => {
+}
+
+const TodoItem: React.FC<ITodoItem> = (props: ITodoItem) => {
   const { item, removeTodo, archiveTodo } = props;
   const reg = /(\d{1,4}([.\-/])\d{1,2}([.\-/])\d{1,4})/g;
 
