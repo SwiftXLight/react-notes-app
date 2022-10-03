@@ -9,8 +9,9 @@ import type { RootState, AppDispatch } from '../redux/store';
 import TodoItem from "./TodoItem";
 import NotesTitles from "../layouts/NotesTitles"
 import SummaryTitles from "layouts/SummaryTitles";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import Item from "interfaces/Item";
+import SortBtn from "./UI/SortBtn";
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -57,30 +58,13 @@ const DisplayTodos = (props: {
   return (
     <div className="flex flex-col items-center mt-12">
       <div className="mb-8">
-        <motion.button
-          className="px-6 py-2 rounded-2xl cursor-pointer bg-silver hover:bg-text-main focus:outline-none mr-4"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={() => setSort("active")}
-        >
-          Active
-        </motion.button>
-        <motion.button
-          className="px-6 py-2 rounded-2xl cursor-pointer bg-silver hover:bg-text-main focus:outline-none mr-4"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={() => setSort("archived")}
-        >
-          Archived
-        </motion.button>
-        <motion.button
-          className="px-6 py-2 rounded-2xl cursor-pointer bg-silver hover:bg-text-main focus:outline-none"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={() => setSort("all")}
-        >
-          All
-        </motion.button>
+
+        <SortBtn children={"Active"} onClick={() => setSort("active")}/>
+
+        <SortBtn children={"Archived"} onClick={() => setSort("archived")}/>
+
+        <SortBtn children={"All"} onClick={() => setSort("all")}/>
+
       </div>
       <NotesTitles />
       <ul className="todos-list flex-column mb-4">
