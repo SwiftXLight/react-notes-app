@@ -12,6 +12,7 @@ import SummaryTitles from "layouts/SummaryTitles";
 import { AnimatePresence } from "framer-motion";
 import Item from "interfaces/Item";
 import SortBtn from "./UI/SortBtn";
+import SummaryItems from "./UI/SummaryItems";
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -113,23 +114,12 @@ const DisplayTodos = (props: {
       </ul>
 
       <SummaryTitles />
-      <ul>
-        <li className="radial-gradient grid grid-cols-3 justify-items-center items-center w-vw75 p-3 mb-3 rounded-lg bg-silver relativem">
-          <span>Task</span>
-          <span id="task-active">{activeTask}</span>
-          <span id="task-archive">{archiveTask}</span>
-        </li>
-        <li className="radial-gradient grid grid-cols-3 justify-items-center items-center w-vw75 p-3 mb-3 rounded-lg bg-silver relative">
-          <span>Random Thought</span>
-          <span id="random-thought-active">{activeRandomThought}</span>
-          <span id="random-thought-archive">{archiveRandomThoughtArc}</span>
-        </li>
-        <li className="radial-gradient grid grid-cols-3 justify-items-center items-center w-vw75 p-3 mb-3 rounded-lg bg-silver relative">
-          <span>Idea</span>
-          <span id="idea-active">{activeIdea}</span>
-          <span id="idea-archive">{archiveIdea}</span>
-        </li>
-      </ul>
+
+      <SummaryItems activeTask={activeTask} archiveTask={archiveTask}
+        activeRandomThought={activeRandomThought} archiveRandomThoughtArc={archiveRandomThoughtArc}
+        activeIdea={activeIdea} archiveIdea={archiveIdea}
+      />
+      
     </div>
   );
 };

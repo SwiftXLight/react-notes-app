@@ -5,7 +5,6 @@ import AddBtn from "../layouts/AddBtn";
 import Item from "../interfaces/Item";
 import type { RootState, AppDispatch } from '../redux/store';
 import Modal from "./UI/Modal";
-//import Example from "./UI/TestModal";
 
 let utc = new Date().toJSON().slice(0,10);
 
