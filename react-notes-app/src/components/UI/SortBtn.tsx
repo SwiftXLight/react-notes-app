@@ -2,9 +2,9 @@ import React from "react";
 import { motion } from "framer-motion";
 
 interface ISortBtnProps {
-    children: any;
+    children: string;
     onClick: React.MouseEventHandler<HTMLElement>;
-  }
+}
 
 const SortBtn: React.FC<ISortBtnProps> = (props: ISortBtnProps) => {
     return  <motion.button
