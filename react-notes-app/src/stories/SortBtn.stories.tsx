@@ -4,15 +4,6 @@ export default {
     title: "SortBtn",
     component: SortBtn,
     argTypes: {
-        size: {
-            type: "string",
-            description: "Summary titles",
-            defaultValue: "default",
-            options: ["default", "default2"],
-            control: {
-                type: "radio"
-            }
-        },
         children: {
             type: "string",
             description: "Show items",
@@ -30,6 +21,5 @@ const Template = (arg: any) => <SortBtn {...arg}/>
 export const Default = Template.bind({});
 //@ts-ignore
 Default.args = {
-    size: "default",
     children: "Active"
 }
